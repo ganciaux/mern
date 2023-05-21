@@ -50,7 +50,12 @@ const logoutUser = asyncHandler(async (req, res) => {
 });
 
 const profileUser = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: 'Profile user' });
+  const user = {
+    _id: req.user._id,
+    name: req.user.name,
+    email: req.user.email
+  };
+  res.status(200).json({ user });
 });
 
 const updateUser = asyncHandler(async (req, res) => {
